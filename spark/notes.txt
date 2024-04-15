@@ -1,0 +1,52 @@
+
+
+
+
+
+Distributing computing framework
+
+
+
+
+1. Abstraction
+2. unified platform
+3. Ease of use
+
+Interact wqith spark:
+spark submit | Cluster mode
+interactive  | Cluster client mode
+
+Spark:
+master/driver:
+spark-class org.apache.spark.deploy.master.Master --host 127.0.0.1
+
+
+worker/executor:
+spark-class org.apache.spark.deploy.worker.Worker spark://127.0.0.1:7077 --host 127.0.0.1
+
+spark-submit --master spark://127.0.0.1:7077 --name SparkTest --total-executor-cores 4 --executor-memory 2g --executor-cores 2  <script name>
+
+RDD:
+    -> Native spark objects
+    -> In memory 
+    -> Split into partitions 
+    -> Read only
+    -> Resilient(autorecover)
+   
+Lineage Graph defines tests that are used for creation of an RDD
+
++++++++++++++++++++++++++++++++++++++++++++++++
+
+kafka:
+
+zookeeper:
+$KAFKA_HOME/bin/zookeeper-server-start.sh $KAFKA_HOME/config/zookeeper.properties
+
+start kafk:
+$KAFKA_HOME/bin/kafka-server-start.sh $KAFKA_HOME/config/server.properties 
+
+producer:
+$KAFKA_HOME/bin/kafka-console-producer.sh --topic sample-topic --broker-list localhost:9092
+
+consumer:
+$KAFKA_HOME/bin/kafka-console-consumer.sh --topic sample-topic --from-beginning --bootstrap-server localhost:9092
